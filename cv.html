@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Emad El Din — Filmmaker CV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --gold: #b8973a;
+    --gold-light: #d4af6a;
+    --cream: #f5f0e8;
+    --warm-gray: #888078;
+    --mid: #444;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: var(--black);
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 70mm 1fr;
+  }
+
+  /* LEFT SIDEBAR */
+  .sidebar {
+    background: var(--black);
+    color: #fff;
+    padding: 14mm 8mm 14mm 10mm;
+    display: flex;
+    flex-direction: column;
+    gap: 9mm;
+  }
+
+  .sidebar-name {
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 6mm;
+  }
+
+  .sidebar-name h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .sidebar-name .first { display: block; }
+  .sidebar-name .last {
+    display: block;
+    font-weight: 600;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .sidebar-name .title {
+    margin-top: 3mm;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--warm-gray);
+    font-weight: 400;
+  }
+
+  .sidebar-section-title {
+    font-size: 6.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 3mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 0.5px solid #333;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5mm;
+  }
+
+  .contact-label {
+    font-size: 6pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--warm-gray);
+  }
+
+  .contact-value {
+    font-size: 8pt;
+    color: #ddd;
+    font-weight: 300;
+  }
+
+  .skill-bar-wrapper {
+    margin-bottom: 3mm;
+  }
+
+  .skill-name {
+    font-size: 8pt;
+    color: #ccc;
+    font-weight: 300;
+    margin-bottom: 1mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .skill-bar {
+    height: 2px;
+    background: #2a2a2a;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 1px;
+  }
+
+  .software-tag {
+    display: inline-block;
+    font-size: 6.5pt;
+    background: #1e1e1e;
+    color: #bbb;
+    border: 0.5px solid #333;
+    border-radius: 2px;
+    padding: 1mm 2.5mm;
+    margin: 0.75mm;
+    letter-spacing: 0.05em;
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2mm;
+  }
+
+  .lang-name { font-size: 8pt; color: #ccc; }
+  .lang-level {
+    font-size: 6.5pt;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .training-item {
+    margin-bottom: 3mm;
+  }
+
+  .training-school {
+    font-size: 8pt;
+    color: #ddd;
+    font-weight: 500;
+  }
+
+  .training-program {
+    font-size: 7pt;
+    color: var(--warm-gray);
+    font-style: italic;
+  }
+
+  .training-status {
+    font-size: 6pt;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5mm;
+  }
+
+  /* RIGHT MAIN */
+  .main {
+    padding: 14mm 12mm 14mm 10mm;
+    display: flex;
+    flex-direction: column;
+    gap: 8mm;
+  }
+
+  .main-section-title {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid #e8e0d0;
+    position: relative;
+  }
+
+  .main-section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 12mm;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .profile-text {
+    font-size: 9pt;
+    line-height: 1.75;
+    color: #333;
+    font-weight: 300;
+  }
+
+  .profile-text strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  .project-item {
+    margin-bottom: 5mm;
+    padding-bottom: 5mm;
+    border-bottom: 0.5px solid #eee;
+  }
+
+  .project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5mm;
+  }
+
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.2;
+  }
+
+  .project-title .arabic {
+    font-size: 9pt;
+    color: var(--warm-gray);
+    font-weight: 400;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+  }
+
+  .project-role-badge {
+    font-size: 6.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #fff;
+    background: var(--black);
+    padding: 1mm 3mm;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 4mm;
+    margin-top: 1mm;
+  }
+
+  .project-type {
+    font-size: 7.5pt;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+
+  .project-type .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  .project-bullets {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-bullets li {
+    font-size: 8.5pt;
+    color: #444;
+    font-weight: 300;
+    padding-left: 4mm;
+    position: relative;
+    margin-bottom: 1.5mm;
+    line-height: 1.55;
+  }
+
+  .project-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 7pt;
+    top: 1px;
+  }
+
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .edu-left {}
+
+  .edu-school {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .edu-degree {
+    font-size: 8.5pt;
+    color: #555;
+    font-weight: 300;
+    margin-top: 0.5mm;
+  }
+
+  .edu-track {
+    font-size: 8pt;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 1mm;
+  }
+
+  .marketing-item {
+    margin-bottom: 4mm;
+  }
+
+  .marketing-campaign {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .marketing-client {
+    font-size: 8pt;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5mm;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .page { width: 100%; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-name">
+      <h1>
+        <span class="first">Omar Emad</span>
+        <span class="last">El Din</span>
+      </h1>
+      <div class="title">Filmmaker &amp; Creative Director</div>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <div class="sidebar-section-title">Contact</div>
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">omar16emad@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Cairo, Egypt</span>
+      </div>
+    </div>
+
+    <!-- Core Skills -->
+    <div>
+      <div class="sidebar-section-title">Core Skills</div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Screenwriting</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Directing</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Film Production</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Sound Recording</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Creative Direction</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Visual Storytelling</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+      </div>
+      <div class="skill-bar-wrapper">
+        <div class="skill-name"><span>Film Set Collaboration</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+      </div>
+    </div>
+
+    <!-- Training -->
+    <div>
+      <div class="sidebar-section-title">Film Training</div>
+      <div class="training-item">
+        <div class="training-school">Arab Film School</div>
+        <div class="training-program">Full Filmmaking Diploma</div>
+        <div class="training-status">● In Progress</div>
+      </div>
+      <div class="training-item">
+        <div class="training-school">We Can Film School</div>
+        <div class="training-program">Full Filmmaking Diploma</div>
+      </div>
+      <div class="training-item">
+        <div class="training-school">We Can Film School</div>
+        <div class="training-program">Filmmaking Level 1</div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div>
+      <div class="sidebar-section-title">Languages</div>
+      <div class="lang-item">
+        <span class="lang-name">Arabic</span>
+        <span class="lang-level">Native</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">Fluent</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- Profile -->
+    <div>
+      <div class="main-section-title">Profile</div>
+      <p class="profile-text">
+        A dedicated <strong>filmmaker and visual storyteller</strong> with a Bachelor's degree in Media and Mass Communication (Filmmaking Track) from the British University in Egypt. Proven ability to lead creative projects from concept to screen — spanning narrative short films, documentary production, and brand storytelling campaigns. Currently deepening craft through intensive diploma training at the Arab Film School. Driven by a commitment to authentic, emotionally resonant cinema.
+      </p>
+    </div>
+
+    <!-- Film & Media Projects -->
+    <div>
+      <div class="main-section-title">Film &amp; Media Projects</div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-title">
+            Qahwet El Mayteen
+            <span class="arabic">قهوة الميتين — Graduation Short Film</span>
+          </div>
+          <div class="project-role-badge">Scriptwriter</div>
+        </div>
+        <div class="project-type">
+          <span class="dot"></span>
+          Narrative Short Film &nbsp;·&nbsp; Graduation Project — British University in Egypt
+        </div>
+        <ul class="project-bullets">
+          <li>Authored the full original screenplay, establishing dramatic structure, character arcs, and thematic throughlines from concept to final draft.</li>
+          <li>Crafted culturally resonant dialogue and scene work rooted in Egyptian social dynamics, ensuring authenticity and emotional depth.</li>
+          <li>Collaborated closely with the directing and production team to translate the script into a cohesive visual narrative for the university's official graduation film.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-title">
+            Documentary Film
+            <span class="arabic">Untitled Documentary Production</span>
+          </div>
+          <div class="project-role-badge">Sound Recordist</div>
+        </div>
+        <div class="project-type">
+          <span class="dot"></span>
+          Documentary &nbsp;·&nbsp; On-Set Production
+        </div>
+        <ul class="project-bullets">
+          <li>Operated boom and field recording equipment on an active documentary set, capturing clean, broadcast-quality dialogue and ambient sound.</li>
+          <li>Monitored levels in real time, adapting to changing on-location acoustics to eliminate noise and maintain sonic continuity across scenes.</li>
+          <li>Coordinated with the director and camera team to ensure sound coverage aligned with visual framing choices.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Creative & Marketing -->
+    <div>
+      <div class="main-section-title">Creative &amp; Brand Work</div>
+      <div class="marketing-item">
+        <div class="project-header">
+          <div class="project-title">Placid Disruption Campaign</div>
+          <div class="project-role-badge">Creative Director</div>
+        </div>
+        <div class="marketing-client">Placid Essentials &nbsp;·&nbsp; Brand Campaign</div>
+        <ul class="project-bullets">
+          <li>Conceptualized and directed the full creative vision for the brand's flagship marketing campaign, defining visual language, tone, and narrative arc.</li>
+          <li>Applied filmmaking storytelling techniques to commercial content, producing material that elevated brand identity through cinematic aesthetics.</li>
+          <li>Managed creative execution across all visual assets, ensuring consistency from pre-production brief to final deliverable.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div>
+      <div class="main-section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-left">
+          <div class="edu-school">British University in Egypt (BUE)</div>
+          <div class="edu-degree">Bachelor of Arts — Media and Mass Communication</div>
+          <div class="edu-track">Filmmaking Specialization Track</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

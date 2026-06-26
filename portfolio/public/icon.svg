@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- dark background circle -->
+  <rect width="32" height="32" rx="6" fill="#0b0b0b"/>
+
+  <!-- clapperboard body -->
+  <rect x="5" y="13" width="22" height="14" rx="1.5" fill="#b8973a" opacity="0.15"/>
+  <rect x="5" y="13" width="22" height="14" rx="1.5" stroke="#b8973a" stroke-width="1.5"/>
+
+  <!-- clapper top bar -->
+  <rect x="5" y="9" width="22" height="4.5" rx="1" fill="#b8973a"/>
+
+  <!-- diagonal stripes on top bar -->
+  <clipPath id="c"><rect x="5" y="9" width="22" height="4.5" rx="1"/></clipPath>
+  <g clip-path="url(#c)">
+    <line x1="9"  y1="9" x2="5"  y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+    <line x1="13" y1="9" x2="9"  y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+    <line x1="17" y1="9" x2="13" y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+    <line x1="21" y1="9" x2="17" y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+    <line x1="25" y1="9" x2="21" y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+    <line x1="29" y1="9" x2="25" y2="13.5" stroke="#0b0b0b" stroke-width="2.2"/>
+  </g>
+
+  <!-- hinge dot -->
+  <circle cx="16" cy="9" r="1.5" fill="#0b0b0b" opacity="0.6"/>
+
+  <!-- body lines (looks like a form) -->
+  <line x1="8" y1="17.5" x2="24" y2="17.5" stroke="#b8973a" stroke-width="1" opacity="0.5"/>
+  <line x1="8" y1="20.5" x2="20" y2="20.5" stroke="#b8973a" stroke-width="1" opacity="0.35"/>
+  <line x1="8" y1="23.5" x2="17" y2="23.5" stroke="#b8973a" stroke-width="1" opacity="0.35"/>
+</svg>

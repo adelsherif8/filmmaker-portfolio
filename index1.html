@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Emad El Din — Filmmaker</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300;1,400;1,600&family=Inter:wght@100;200;300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black:   #050505;
+  --dark:    #0d0d0d;
+  --panel:   #111111;
+  --border:  rgba(255,255,255,0.06);
+  --gold:    #b8973a;
+  --gold2:   #d4af6a;
+  --cream:   #f0ead8;
+  --dim:     rgba(255,255,255,0.35);
+  --muted:   rgba(255,255,255,0.15);
+  --text:    rgba(255,255,255,0.88);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── CURSOR ─────────────────────────────────────── */
+#cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 12px; height: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s, width 0.25s, height 0.25s, opacity 0.25s;
+  mix-blend-mode: difference;
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 4px; height: 4px;
+  background: var(--gold2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+#cursor.hovering {
+  width: 40px;
+  height: 40px;
+  border-color: var(--gold2);
+}
+
+/* ── GRAIN OVERLAY ───────────────────────────────── */
+#grain {
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9998;
+  animation: grainShift 0.15s steps(1) infinite;
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0,0); }
+  10%  { transform: translate(-5%, -10%); }
+  20%  { transform: translate(-15%, 5%); }
+  30%  { transform: translate(7%, -25%); }
+  40%  { transform: translate(-5%, 25%); }
+  50%  { transform: translate(-15%, 10%); }
+  60%  { transform: translate(15%, 0%); }
+  70%  { transform: translate(0%, 15%); }
+  80%  { transform: translate(3%, 35%); }
+  90%  { transform: translate(-10%, 10%); }
+  100% { transform: translate(5%, 5%); }
+}
+
+/* ── NAVIGATION ──────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 28px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, transparent 100%);
+  transition: padding 0.4s;
+}
+
+nav.scrolled {
+  padding: 18px 60px;
+  background: rgba(5,5,5,0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--gold); font-style: italic; }
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ── HERO ────────────────────────────────────────── */
+#hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 30% 50%, rgba(184,151,58,0.04) 0%, transparent 70%),
+    linear-gradient(160deg, #0d0d0d 0%, #050505 100%);
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-lines::before {
+  content: '';
+  position: absolute;
+  left: 42%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent 0%, var(--border) 30%, var(--border) 70%, transparent 100%);
+}
+
+.frame-corners {
+  position: absolute;
+  inset: 40px;
+  pointer-events: none;
+}
+
+.fc {
+  position: absolute;
+  width: 30px; height: 30px;
+  border-color: rgba(184,151,58,0.35);
+  border-style: solid;
+}
+
+.fc-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.fc-tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.fc-bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.fc-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px 80px;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 200;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s 0.5s forwards;
+}
+
+.hero-name .italic-line {
+  font-style: italic;
+  color: var(--gold2);
+  font-weight: 300;
+}
+
+.hero-tagline {
+  margin-top: 28px;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--dim);
+  max-width: 420px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s 0.9s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.4s forwards;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-label {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+.hero-reel-counter {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.2s forwards;
+}
+
+.reel-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+}
+
+.reel-label {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.08);
+  display: block;
+  margin-top: -8px;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION SHARED ──────────────────────────────── */
+section {
+  padding: 120px 60px;
+}
+
+.section-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 50px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 100px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── ABOUT ───────────────────────────────────────── */
+#about {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.about-text h2 em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.about-text p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--dim);
+  margin-bottom: 16px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stat-row {
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.stat-row:hover {
+  border-color: var(--gold);
+  background: rgba(184,151,58,0.04);
+}
+
+.stat-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 1;
+}
+
+.stat-num sup {
+  font-size: 18px;
+  color: var(--gold);
+  vertical-align: super;
+}
+
+.stat-desc {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+/* ── FILMS ───────────────────────────────────────── */
+#films {
+  background: var(--black);
+}
+
+.films-intro {
+  max-width: 520px;
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.8;
+  margin-bottom: 60px;
+}
+
+.film-card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  margin-bottom: 2px;
+  overflow: hidden;
+  cursor: none;
+  transition: border-color 0.4s;
+}
+
+.film-card:hover { border-color: rgba(184,151,58,0.4); }
+
+.film-card-inner {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  transition: background 0.4s;
+}
+
+.film-card:hover .film-card-inner { background: rgba(255,255,255,0.015); }
+
+.film-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.12);
+  text-align: center;
+  padding: 36px 0;
+  border-right: 1px solid var(--border);
+}
+
+.film-info {
+  padding: 32px 36px;
+}
+
+.film-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  transition: color 0.3s;
+}
+
+.film-card:hover .film-title { color: var(--gold2); }
+
+.film-title-ar {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  font-style: italic;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.film-meta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.film-tag {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  border: 1px solid rgba(184,151,58,0.3);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.film-role {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.film-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 10px;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.film-arrow {
+  padding: 36px 36px 36px 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.film-card:hover .film-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.film-arrow svg {
+  width: 20px; height: 20px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.film-progress {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.film-card:hover .film-progress { transform: scaleX(1); }
+
+/* ── BEHIND LENS / REEL ──────────────────────────── */
+#reel {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 120px 60px;
+}
+
+.reel-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 200;
+  line-height: 1.1;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.reel-heading em { font-style: italic; color: var(--gold2); }
+
+.frames-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.frame-box {
+  aspect-ratio: 16/9;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.4s;
+}
+
+.frame-box:hover { border-color: rgba(184,151,58,0.5); }
+
+.frame-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(184,151,58,0.03) 0%, transparent 60%);
+}
+
+.frame-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px;
+}
+
+.frame-icon {
+  width: 44px; height: 44px;
+  margin: 0 auto 16px;
+  opacity: 0.3;
+}
+
+.frame-icon svg {
+  width: 100%; height: 100%;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1;
+}
+
+.frame-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+}
+
+.frame-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.frame-corner-mark {
+  position: absolute;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  color: rgba(255,255,255,0.08);
+}
+
+.fcm-tl { top: 10px; left: 10px; }
+.fcm-br { bottom: 10px; right: 10px; }
+
+/* Camera Roll / Skills Visual */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 60px;
+  border: 1px solid var(--border);
+}
+
+.skill-cell {
+  background: var(--black);
+  padding: 28px 24px;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-cell:hover { background: rgba(184,151,58,0.05); }
+
+.skill-cell::before {
+  content: attr(data-n);
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,0.06);
+}
+
+.skill-cell-icon {
+  width: 28px; height: 28px;
+  margin-bottom: 14px;
+  opacity: 0.5;
+}
+
+.skill-cell-icon svg {
+  width: 100%; height: 100%;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.2;
+}
+
+.skill-cell-name {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.05em;
+}
+
+.skill-cell-detail {
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* ── TRAINING ────────────────────────────────────── */
+#training {
+  background: var(--black);
+}
+
+.training-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+}
+
+.training-card {
+  background: var(--black);
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.training-card:hover { background: rgba(255,255,255,0.015); }
+
+.training-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.training-card:hover::before { transform: scaleX(1); }
+
+.training-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 60px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  margin-bottom: -10px;
+}
+
+.training-school-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.training-program-name {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--dim);
+  margin-bottom: 16px;
+}
+
+.training-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  border: 1px solid rgba(184,151,58,0.3);
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+
+.training-badge .pulse {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.6); }
+}
+
+/* ── CONTACT ─────────────────────────────────────── */
+#contact {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 140px 60px;
+}
+
+.contact-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 100px);
+  font-weight: 200;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.contact-heading span { font-style: italic; color: var(--gold2); }
+
+.contact-sub {
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto 48px;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 36px;
+  border: 1px solid rgba(184,151,58,0.4);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.contact-email:hover {
+  background: rgba(184,151,58,0.08);
+  border-color: var(--gold);
+}
+
+.contact-email svg {
+  width: 16px; height: 16px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  padding: 28px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 10px;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.1em;
+}
+
+.footer-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* ── HORIZONTAL TICKER ───────────────────────────── */
+.ticker-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  background: var(--panel);
+}
+
+.ticker {
+  display: flex;
+  gap: 60px;
+  animation: ticker 22s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-item {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.ticker-item span {
+  color: var(--gold);
+  margin: 0 8px;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── FILM STRIP ─────────────────────────────────── */
+.filmstrip {
+  display: flex;
+  height: 60px;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  background: #0a0a0a;
+}
+
+.strip-hole {
+  flex-shrink: 0;
+  width: 36px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.04);
+  padding: 8px 0;
+}
+
+.strip-hole .hole {
+  width: 10px; height: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+}
+
+.strip-frame {
+  flex: 1;
+  border-right: 1px solid rgba(255,255,255,0.03);
+}
+
+/* ── MARQUEE QUOTE ───────────────────────────────── */
+.quote-section {
+  padding: 80px 60px;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+.big-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.4;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.big-quote::before {
+  content: '"';
+  position: absolute;
+  left: -40px; top: -20px;
+  font-size: 120px;
+  color: rgba(184,151,58,0.08);
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+}
+
+.big-quote em { color: var(--gold2); font-style: normal; }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 24px; }
+  .hero-content { padding: 0 24px 60px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .frames-strip { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .training-grid { grid-template-columns: 1fr; }
+  .film-card-inner { grid-template-columns: 50px 1fr; }
+  .film-arrow { display: none; }
+  footer { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- Film Grain -->
+<div id="grain"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Omar <span>Emad El Din</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#films">Films</a></li>
+    <li><a href="#reel">Craft</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="frame-corners">
+    <div class="fc fc-tl"></div>
+    <div class="fc fc-tr"></div>
+    <div class="fc fc-bl"></div>
+    <div class="fc fc-br"></div>
+  </div>
+
+  <div class="hero-reel-counter">
+    <div class="reel-num">001</div>
+    <span class="reel-label">Scene One</span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Filmmaker &nbsp;·&nbsp; Scriptwriter &nbsp;·&nbsp; Creative Director</div>
+    <h1 class="hero-name">
+      Omar<br>
+      <span class="italic-line">Emad El Din</span>
+    </h1>
+    <p class="hero-tagline">Visual stories told with intention — from the written word to the final frame. Cairo-based filmmaker crafting cinema that feels, breathes, and endures.</p>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- Film Strip Decoration -->
+<div class="filmstrip" id="strip1">
+  <div class="strip-hole"><div class="hole"></div><div class="hole"></div><div class="hole"></div></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-hole"><div class="hole"></div><div class="hole"></div><div class="hole"></div></div>
+</div>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Scriptwriter <span>✦</span></span>
+    <span class="ticker-item">Film Production <span>✦</span></span>
+    <span class="ticker-item">Sound Design <span>✦</span></span>
+    <span class="ticker-item">Creative Direction <span>✦</span></span>
+    <span class="ticker-item">Visual Storytelling <span>✦</span></span>
+    <span class="ticker-item">Story Development <span>✦</span></span>
+    <span class="ticker-item">Cairo, Egypt <span>✦</span></span>
+    <span class="ticker-item">Scriptwriter <span>✦</span></span>
+    <span class="ticker-item">Film Production <span>✦</span></span>
+    <span class="ticker-item">Sound Design <span>✦</span></span>
+    <span class="ticker-item">Creative Direction <span>✦</span></span>
+    <span class="ticker-item">Visual Storytelling <span>✦</span></span>
+    <span class="ticker-item">Story Development <span>✦</span></span>
+    <span class="ticker-item">Cairo, Egypt <span>✦</span></span>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section id="about">
+  <div class="section-label">01 — About</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2>Cinema is how I<br><em>understand the world.</em></h2>
+      <p>A filmmaking graduate from the British University in Egypt, Omar Emad El Din has spent years developing a voice rooted in authentic human experience — stories drawn from culture, memory, and the quiet tensions of everyday life.</p>
+      <p>From writing the graduation film <em>Qahwet El Mayteen</em> to directing creative campaigns and recording on documentary sets, Omar works at every layer of the filmmaking process with precision and passion.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-row">
+        <div class="stat-num">3<sup>+</sup></div>
+        <div class="stat-desc">Film Productions Contributed</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">3</div>
+        <div class="stat-desc">Filmmaking Diplomas & Courses</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">1</div>
+        <div class="stat-desc">Brand Campaign Directed</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">∞</div>
+        <div class="stat-desc">Stories Left to Tell</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FILMS ─────────────────────────────────────── -->
+<section id="films">
+  <div class="section-label">02 — Films & Projects</div>
+  <p class="films-intro reveal">A body of work spanning narrative short film, documentary production, and brand storytelling — each project a study in craft, collaboration, and vision.</p>
+
+  <!-- Film 1 -->
+  <div class="film-card reveal">
+    <div class="film-card-inner">
+      <div class="film-num">001</div>
+      <div class="film-info">
+        <div class="film-title">
+          Qahwet El Mayteen
+          <span class="film-title-ar">قهوة الميتين</span>
+        </div>
+        <div class="film-meta">
+          <span class="film-tag">Short Film</span>
+          <span class="film-tag">Graduation Project</span>
+          <span class="film-role">Scriptwriter</span>
+        </div>
+        <p class="film-desc">An original screenplay developed for the BUE graduation project — a narrative rooted in Egyptian cultural life, blending dark atmosphere with emotionally resonant character work. From concept through final draft, Omar authored every layer of the story's structure and dialogue.</p>
+      </div>
+      <div class="film-arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+    <div class="film-progress"></div>
+  </div>
+
+  <!-- Film 2 -->
+  <div class="film-card reveal">
+    <div class="film-card-inner">
+      <div class="film-num">002</div>
+      <div class="film-info">
+        <div class="film-title">
+          Documentary Film
+          <span class="film-title-ar">Untitled Documentary Production</span>
+        </div>
+        <div class="film-meta">
+          <span class="film-tag">Documentary</span>
+          <span class="film-role">Sound Recordist</span>
+        </div>
+        <p class="film-desc">On-set audio capture for a documentary production — operating field recording equipment to deliver broadcast-quality sound across varied and demanding locations. Real-time level monitoring, acoustic problem-solving, and seamless coordination with the camera team.</p>
+      </div>
+      <div class="film-arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+    <div class="film-progress"></div>
+  </div>
+
+  <!-- Film 3 -->
+  <div class="film-card reveal">
+    <div class="film-card-inner">
+      <div class="film-num">003</div>
+      <div class="film-info">
+        <div class="film-title">
+          Placid Disruption Campaign
+          <span class="film-title-ar">Placid Essentials — Brand Campaign</span>
+        </div>
+        <div class="film-meta">
+          <span class="film-tag">Brand Film</span>
+          <span class="film-tag">Commercial</span>
+          <span class="film-role">Creative Director</span>
+        </div>
+        <p class="film-desc">Conceived and led the complete creative direction for Placid Essentials' flagship campaign — defining the visual identity, storytelling concept, and tonal language from brief to final cut. Cinematic aesthetics applied to commercial storytelling with a singular, intentional vision.</p>
+      </div>
+      <div class="film-arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </div>
+    <div class="film-progress"></div>
+  </div>
+</section>
+
+<!-- ── QUOTE ──────────────────────────────────────── -->
+<div class="quote-section">
+  <p class="big-quote reveal">
+    Cinema is not a mirror to reality — it's a <em>window to everything</em> reality cannot say out loud.
+  </p>
+</div>
+
+<!-- ── REEL / CRAFT ───────────────────────────────── -->
+<section id="reel">
+  <div class="section-label">03 — Craft</div>
+  <h2 class="reel-heading reveal">Behind the <em>Lens</em></h2>
+
+  <div class="frames-strip">
+    <div class="frame-box reveal">
+      <div class="frame-overlay"></div>
+      <div class="frame-content">
+        <div class="frame-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+        </div>
+        <div class="frame-label">Directing</div>
+        <div class="frame-title">The eye behind the frame</div>
+      </div>
+      <span class="frame-corner-mark fcm-tl">F01</span>
+      <span class="frame-corner-mark fcm-br">▣</span>
+    </div>
+    <div class="frame-box reveal">
+      <div class="frame-overlay"></div>
+      <div class="frame-content">
+        <div class="frame-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <div class="frame-label">Screenwriting</div>
+        <div class="frame-title">Where every story begins</div>
+      </div>
+      <span class="frame-corner-mark fcm-tl">F02</span>
+      <span class="frame-corner-mark fcm-br">▣</span>
+    </div>
+    <div class="frame-box reveal">
+      <div class="frame-overlay"></div>
+      <div class="frame-content">
+        <div class="frame-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>
+        </div>
+        <div class="frame-label">Sound Recording</div>
+        <div class="frame-title">Capturing the invisible</div>
+      </div>
+      <span class="frame-corner-mark fcm-tl">F03</span>
+      <span class="frame-corner-mark fcm-br">▣</span>
+    </div>
+  </div>
+
+  <!-- Skills grid -->
+  <div class="skills-grid reveal">
+    <div class="skill-cell" data-n="01">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="skill-cell-name">Script Writing</div>
+      <div class="skill-cell-detail">Structure · Dialogue · Arc</div>
+    </div>
+    <div class="skill-cell" data-n="02">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <div class="skill-cell-name">Film Production</div>
+      <div class="skill-cell-detail">Pre · Production · Post</div>
+    </div>
+    <div class="skill-cell" data-n="03">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+      </div>
+      <div class="skill-cell-name">Sound Recording</div>
+      <div class="skill-cell-detail">Field · Boom · Location</div>
+    </div>
+    <div class="skill-cell" data-n="04">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="skill-cell-name">Creative Direction</div>
+      <div class="skill-cell-detail">Vision · Identity · Campaign</div>
+    </div>
+    <div class="skill-cell" data-n="05">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="skill-cell-name">Visual Storytelling</div>
+      <div class="skill-cell-detail">Frame · Light · Composition</div>
+    </div>
+    <div class="skill-cell" data-n="06">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="skill-cell-name">Set Collaboration</div>
+      <div class="skill-cell-detail">Crew · Communication · Flow</div>
+    </div>
+    <div class="skill-cell" data-n="07">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="skill-cell-name">Story Development</div>
+      <div class="skill-cell-detail">Concept · Theme · Narrative</div>
+    </div>
+    <div class="skill-cell" data-n="08">
+      <div class="skill-cell-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+      </div>
+      <div class="skill-cell-name">Directing</div>
+      <div class="skill-cell-detail">Cast · Frame · Emotion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRAINING ───────────────────────────────────── -->
+<section id="training">
+  <div class="section-label">04 — Training</div>
+  <div class="training-grid">
+    <div class="training-card reveal">
+      <div class="training-num">01</div>
+      <div class="training-school-name">Arab Film School</div>
+      <div class="training-program-name">Full Filmmaking Diploma</div>
+      <div class="training-badge">
+        <span class="pulse"></span>
+        Currently in Progress
+      </div>
+    </div>
+    <div class="training-card reveal">
+      <div class="training-num">02</div>
+      <div class="training-school-name">We Can Film School</div>
+      <div class="training-program-name">Full Filmmaking Diploma</div>
+      <div class="training-badge">Completed</div>
+    </div>
+    <div class="training-card reveal">
+      <div class="training-num">03</div>
+      <div class="training-school-name">We Can Film School</div>
+      <div class="training-program-name">Filmmaking Level 1</div>
+      <div class="training-badge">Completed</div>
+    </div>
+    <div class="training-card reveal">
+      <div class="training-num">04</div>
+      <div class="training-school-name">British University in Egypt</div>
+      <div class="training-program-name">BSc — Media &amp; Mass Communication · Filmmaking Track</div>
+      <div class="training-badge">Graduated</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────── -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center">05 — Contact</div>
+  <h2 class="contact-heading reveal">Let's make<br><span>something</span> real.</h2>
+  <p class="contact-sub reveal">Available for film projects, creative direction, and collaborative storytelling. Cairo-based, globally minded.</p>
+  <a href="mailto:omar16emad@gmail.com" class="contact-email reveal">
+    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    omar16emad@gmail.com
+  </a>
+</section>
+
+<!-- Film Strip -->
+<div class="filmstrip">
+  <div class="strip-hole"><div class="hole"></div><div class="hole"></div><div class="hole"></div></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-frame"></div><div class="strip-frame"></div>
+  <div class="strip-hole"><div class="hole"></div><div class="hole"></div><div class="hole"></div></div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-copy">© 2024 Omar Emad El Din. All rights reserved. Cairo, Egypt.</span>
+  <span class="footer-mark">قهوة الميتين</span>
+</footer>
+
+<script>
+// ── CURSOR ──────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursor-dot');
+let mx = 0, my = 0, cx = 0, cy = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursorDot.style.left = mx + 'px';
+  cursorDot.style.top = my + 'px';
+});
+
+function animateCursor() {
+  cx += (mx - cx) * 0.12;
+  cy += (my - cy) * 0.12;
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, .film-card, .stat-row, .skill-cell, .training-card, .frame-box').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+});
+
+// ── NAV SCROLL ──────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── SCROLL REVEAL ───────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+
+// ── PARALLAX HERO NAME ──────────────────────────────
+const heroName = document.querySelector('.hero-name');
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (heroName) heroName.style.transform = `translateY(${y * 0.25}px)`;
+  if (heroBg) heroBg.style.transform = `translateY(${y * 0.12}px)`;
+});
+
+// ── FILM CARD HOVER SOUND VISUAL ────────────────────
+document.querySelectorAll('.film-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 3;
+    card.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateY(0) rotateX(0)';
+    card.style.transition = 'transform 0.6s ease, border-color 0.4s';
+  });
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s, border-color 0.4s';
+  });
+});
+
+// ── TYPEWRITER HERO EYEBROW ─────────────────────────
+const eyebrow = document.querySelector('.hero-eyebrow');
+if (eyebrow) {
+  const text = eyebrow.textContent;
+  eyebrow.textContent = '';
+  let idx = 0;
+  function typeIt() {
+    if (idx < text.length) {
+      eyebrow.textContent += text[idx++];
+      setTimeout(typeIt, 38);
+    }
+  }
+  setTimeout(typeIt, 800);
+}
+
+// ── STAT ROW COUNT UP ────────────────────────────────
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-row').forEach(s => statObserver.observe(s));
+</script>
+</body>
+</html>
