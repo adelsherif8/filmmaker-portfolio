@@ -18,20 +18,22 @@ function CountUp({ target, suffix = '' }) {
 }
 
 const stats = [
-  { target: 3, suffix: '+' },
-  { target: 3, suffix: ''  },
-  { target: 1, suffix: ''  },
-  { target: 0, suffix: ''  },
+  { target: 4, suffix: '' },
+  { target: 3, suffix: '' },
+  { target: 1, suffix: '' },
+  { target: 2, suffix: '' },
 ]
 
 const enBio = [
   <>I'm Omar Emad El Din, a Cairo-based filmmaker and a graduate of <strong>The British University in Egypt</strong>, where I studied Media & Mass Communication with a specialization in filmmaking.</>,
-  <>I'm passionate about creating cinematic stories that combine strong visual storytelling with emotion and atmosphere. As a young filmmaker, I aspire to create meaningful work that connects with audiences and leaves a lasting impact through film.</>,
+  <>I write in Arabic (including Egyptian dialect) and English, and I've worked on set as a scriptwriter, creative director, sound recordist and slate. I'm passionate about cinematic stories that combine strong visual storytelling with emotion and atmosphere.</>,
+  <>Based in Cairo, moving to Doha, Qatar in December 2026. Open to scriptwriting, content writing, copywriting, creative and crew roles, on-site or remote.</>,
 ]
 
 const arBio = [
-  <>أنا عمر عماد الدين، مخرج من القاهرة، وخريج <strong>الجامعة البريطانية في مصر</strong>، حيث درست الإعلام وصناعة الأفلام بتخصص الإخراج السينمائي.</>,
-  <>شغوف بصناعة قصص سينمائية تجمع بين القوة البصرية والعاطفة والأجواء. وبصفتي مخرجاً شاباً، أطمح إلى صنع أعمال ذات معنى تتصل بالجمهور وتترك أثراً دائماً من خلال السينما.</>,
+  <>أنا عمر عماد الدين، مخرج من القاهرة، وخريج <strong>الجامعة البريطانية في مصر</strong>، حيث درست الاتصال والإعلام (مسار صناعة الأفلام).</>,
+  <>أكتب بالعربية (ومنها العامية المصرية) وبالإنجليزية، واشتغلت في مواقع التصوير ككاتب سيناريو ومدير إبداعي ومسجل صوت وكلاكيت. شغوف بقصص سينمائية تجمع بين القوة البصرية والعاطفة والأجواء.</>,
+  <>مقيم في القاهرة، وأنتقل إلى الدوحة، قطر في ديسمبر 2026. متاح لكتابة السيناريو والمحتوى والإعلانات والأدوار الإبداعية وأدوار فريق التصوير، من الموقع أو عن بُعد.</>,
 ]
 
 export default function About() {

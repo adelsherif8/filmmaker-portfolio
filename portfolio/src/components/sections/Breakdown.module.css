@@ -10,13 +10,13 @@
 .posterCol { position:relative; }
 .posterImg { width:100%; display:block; filter:grayscale(.1) contrast(1.05); }
 .posterFrame { position:absolute; inset:12px; border:1px solid rgba(184,151,58,.2); pointer-events:none; }
-.posterLabel { position:absolute; bottom:16px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:6.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+.posterLabel { position:absolute; bottom:16px; left:0; right:0; text-align:center; font-family:var(--font-mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.5); }
 
 /* Script */
 .script { background:var(--black); border:1px solid var(--border); overflow:hidden; }
 .scriptHeader { padding:18px 32px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
 .scriptTitle { font-family:var(--font-serif); font-size:13px; color:var(--dim); font-style:italic; }
-.scriptMeta  { font-family:var(--font-mono); font-size:7px; color:var(--muted); letter-spacing:.2em; }
+.scriptMeta  { font-family:var(--font-mono); font-size:9px; color:var(--muted); letter-spacing:.2em; }
 .page { padding:32px 40px; font-family:'Courier New', Courier, monospace; font-size:12px; line-height:1.85; color:var(--dim); }
 
 .slug     { text-transform:uppercase; color:var(--text); font-weight:700; margin:18px 0 10px; font-size:11px; }
@@ -28,7 +28,7 @@
 .annotated { cursor:pointer; border-left:2px solid rgba(184,151,58,.3); padding-left:10px; margin-left:-12px; transition:border-color .3s,color .3s; }
 .annotated:hover { border-color:rgba(184,151,58,.7); color:var(--text); }
 .highlighted { border-color:var(--gold) !important; color:var(--text) !important; background:rgba(184,151,58,.04); }
-.pin { font-size:7px; color:var(--gold); margin-left:6px; vertical-align:middle; }
+.pin { font-size:9px; color:var(--gold); margin-left:6px; vertical-align:middle; }
 
 /* Annotations */
 .annotations { padding:32px; border:1px solid var(--border); background:var(--panel); }
@@ -46,3 +46,12 @@
 .hint { font-size:8px; color:var(--muted); text-transform:uppercase; letter-spacing:.2em; margin-top:24px; text-align:center; }
 
 @media (max-width:900px) { .body{grid-template-columns:1fr} .posterCol{display:none} .page{padding:20px 20px} .annotations{padding:20px} }
+
+/* Logline, language toggle, request link */
+.logline { max-width:760px; margin-top:18px; font-family:var(--font-serif); font-size:clamp(16px,1.6vw,20px); line-height:1.55; color:var(--text); font-weight:300; }
+.toggle { display:inline-flex; margin-top:22px; border:1px solid var(--border2); }
+.toggle button { padding:9px 16px; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); cursor:pointer; }
+.toggle .toggleOn { background:var(--gold); color:#0a0a0a; }
+.request { display:inline-flex; align-items:center; gap:8px; margin-top:22px; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); border-bottom:1px solid rgba(184,151,58,.4); padding-bottom:3px; }
+.pageAr { font-family:'Geeza Pro','Noto Naskh Arabic','Segoe UI',Tahoma,sans-serif; font-size:15px; line-height:2; }
+.annotations[dir="rtl"] .noteAnchor, .annotations[dir="rtl"] .noteText { font-family:'Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif; font-style:normal; }

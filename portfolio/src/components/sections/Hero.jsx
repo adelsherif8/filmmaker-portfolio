@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSection } from '../../context/SectionContext'
 import useLang from '../../hooks/useLang'
@@ -9,7 +9,6 @@ export default function Hero({ ready }) {
   const spotRef     = useRef(null)
   const sectionRef  = useRef(null)
   const { registerSection } = useSection()
-  const [nameHover, setNameHover] = useState(false)
   const t = useLang()
 
   useEffect(() => { registerSection('Hero', sectionRef.current) }, [])
@@ -17,6 +16,7 @@ export default function Hero({ ready }) {
   // Canvas: light leaks + particles
   useEffect(() => {
     const cv  = canvasRef.current; if (!cv) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const ctx = cv.getContext('2d')
     let W, H, raf
     const resize = () => { W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight }
@@ -65,13 +65,6 @@ export default function Hero({ ready }) {
     spotRef.current.style.setProperty('--sy', ((e.clientY-r.top)/r.height*100).toFixed(1)+'%')
   }
 
-  // Parallax
-  useEffect(() => {
-    const nameEl = document.getElementById('hero-name-el')
-    const onScroll = () => { if (nameEl) nameEl.style.transform = `translateY(${window.scrollY*.22}px)` }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <section ref={sectionRef} id="hero" className={s.hero} onMouseMove={onMouseMove} dir={t.dir}>
@@ -80,10 +73,6 @@ export default function Hero({ ready }) {
       <div className={s.vline} />
       {['tl','tr','bl','br'].map(p => <div key={p} className={`${s.fc} ${s['fc_'+p]}`} />)}
 
-      <div className={s.metaRight}>
-        <div className={s.metaNum}>001</div>
-        <span className={s.metaTag}>{t.hero.metaTag}</span>
-      </div>
 
       <div className={s.content} id="hero-name-el">
         {ready && (
@@ -103,11 +92,7 @@ export default function Hero({ ready }) {
               </AnimatePresence>
             </motion.div>
 
-            <h1
-              className={`${s.name} ${nameHover ? s.glitch : ''}`}
-              onMouseEnter={() => setNameHover(true)}
-              onMouseLeave={() => setNameHover(false)}
-            >
+            <h1 className={s.name}>
               <div className={s.nameLine}>
                 <motion.span initial={{y:'110%'}} animate={{y:0}} transition={{delay:.4,duration:1.1,ease:[.16,1,.3,1]}}>
                   {t.hero.nameFirst}
@@ -137,13 +122,30 @@ export default function Hero({ ready }) {
               </motion.div>
             </AnimatePresence>
 
-            <motion.a href="/cv.html" target="_blank" rel="noopener noreferrer"
-              className={`${s.cvBtn} hoverable`}
+            <motion.div className={s.loc}
+              initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.6,duration:.6}}>
+              <i className="fa-solid fa-location-dot" /> {t.hero.location}
+            </motion.div>
+
+            <motion.div className={s.actions}
               initial={{opacity:0,y:14}} animate={{opacity:1,y:0}}
               transition={{delay:.7,duration:.7}}>
-              <i className="fa-solid fa-file-lines" />
-              <span>{t.hero.cv}</span>
-            </motion.a>
+              <a href="#breakdown" className={`${s.cvBtn} ${s.primary}`}>
+                <i className="fa-solid fa-pen-nib" /><span>{t.hero.readScript}</span>
+              </a>
+              <a href="#films" className={s.cvBtn}>
+                <i className="fa-solid fa-play" /><span>{t.hero.watch}</span>
+              </a>
+              <a href="mailto:omar16emad@gmail.com" className={s.cvBtn}>
+                <i className="fa-solid fa-envelope" /><span>{t.hero.email}</span>
+              </a>
+              <a href="https://wa.me/201009955921" target="_blank" rel="noopener noreferrer" className={s.cvBtn}>
+                <i className="fa-brands fa-whatsapp" /><span>WhatsApp</span>
+              </a>
+              <a href="/cv.html" target="_blank" rel="noopener noreferrer" className={s.cvBtn}>
+                <i className="fa-solid fa-file-lines" /><span>{t.hero.cv}</span>
+              </a>
+            </motion.div>
           </>
         )}
       </div>

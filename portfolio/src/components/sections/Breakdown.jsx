@@ -12,10 +12,12 @@ export default function Breakdown() {
   const { registerSection } = useSection()
   const [active, setActive] = useState(null)
   const t = useLang()
-  const isArabic = t.dir === 'rtl'
+  const [orig, setOrig] = useState(t.dir === 'rtl')
+  useEffect(() => { setOrig(t.dir === 'rtl'); setActive(null) }, [t.dir])
+  const isArabic = orig
   const excerpt     = isArabic ? breakdown.excerpt_ar     : breakdown.excerpt
   const annotations = isArabic ? breakdown.annotations_ar : breakdown.annotations
-  useEffect(() => registerSection('Breakdown', ref.current), [])
+  useEffect(() => registerSection('Writing', ref.current), [])
 
   return (
     <section ref={ref} id="breakdown" className={`${s.wrap} section`} dir={t.dir}>
@@ -31,6 +33,11 @@ export default function Breakdown() {
           transition={{duration:.8,delay:.1}} viewport={{once:true}}>
           {t.breakdown.subtitle}
         </motion.p>
+        <p className={s.logline}>{t.breakdown.logline}</p>
+        <div className={s.toggle} role="group" aria-label="Script language">
+          <button className={isArabic ? s.toggleOn : ''} onClick={() => { setOrig(true); setActive(null) }}>{t.breakdown.original}</button>
+          <button className={!isArabic ? s.toggleOn : ''} onClick={() => { setOrig(false); setActive(null) }}>{t.breakdown.translation}</button>
+        </div>
       </div>
 
       <div className={s.body}>
@@ -40,18 +47,18 @@ export default function Breakdown() {
           transition={{duration:.9,ease:[.16,1,.3,1]}} viewport={{once:true}}>
           <img src="/posters/qahwet-poster-new.jpg" alt="Qahwet El Mayteen poster" className={s.posterImg} />
           <div className={s.posterFrame} />
-          <span className={s.posterLabel}>قهوة الميتين · 2024</span>
+          <span className={s.posterLabel}>قهوة الميتين · 2025</span>
         </motion.div>
 
         {/* Screenplay column */}
-        <motion.div className={s.script} dir={t.dir}
+        <motion.div className={s.script} dir={isArabic ? 'rtl' : 'ltr'}
           initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}}
           transition={{duration:.9,ease:[.16,1,.3,1]}} viewport={{once:true}}>
           <div className={s.scriptHeader}>
             <span className={s.scriptTitle}>{breakdown.title}</span>
             <span className={s.scriptMeta}>{t.breakdown.scriptMeta}</span>
           </div>
-          <div className={s.page}>
+          <div className={`${s.page} ${isArabic ? s.pageAr : ''}`}>
             {excerpt.map((line, i) => {
               const isAnnotated = annotations.some(a => a.anchor === line.text)
               const isActive    = active === line.text
@@ -68,7 +75,7 @@ export default function Breakdown() {
         </motion.div>
 
         {/* Annotations column */}
-        <motion.div className={s.annotations}
+        <motion.div className={s.annotations} dir={isArabic ? 'rtl' : 'ltr'}
           initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}}
           transition={{duration:.9,delay:.1,ease:[.16,1,.3,1]}} viewport={{once:true}}>
           <div className={s.annotTitle}>
@@ -81,7 +88,7 @@ export default function Breakdown() {
               whileHover={{x: 4}} transition={{duration:.2}}>
               <div className={s.noteNum}>0{i + 1}</div>
               <div>
-                <div className={s.noteAnchor}>&ldquo;{a.anchor}&rdquo;</div>
+                <div className={s.noteAnchor}>&ldquo;{a.anchor.length > 70 ? a.anchor.slice(0, 70) + '…' : a.anchor}&rdquo;</div>
                 <AnimatePresence>
                   {active === a.anchor && (
                     <motion.p className={s.noteText}
@@ -95,6 +102,7 @@ export default function Breakdown() {
             </motion.div>
           ))}
           <p className={s.hint}>{t.breakdown.hint}</p>
+          <a href="#contact" className={s.request}><i className="fa-solid fa-file-pdf" /> {t.breakdown.request}</a>
         </motion.div>
       </div>
     </section>

@@ -14,7 +14,7 @@
 .frameLbl   { font-size:8px; text-transform:uppercase; letter-spacing:.3em; color:var(--muted); }
 .frameTitle { font-family:var(--font-serif); font-size:14px; color:var(--muted); margin-top:4px; font-style:italic; transition:color .3s; }
 .frame:hover .frameTitle { color:var(--dim); }
-.frameCn { position:absolute; top:9px; left:9px; font-family:var(--font-mono); font-size:6.5px; color:var(--muted); opacity:.3; }
+.frameCn { position:absolute; top:9px; left:9px; font-family:var(--font-mono); font-size:9px; color:var(--muted); opacity:.3; }
 .radarWrap { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:4px; padding:40px; background:var(--panel); border:1px solid var(--border); }
 .radar { width:100%; max-width:400px; margin:0 auto; display:block; color:var(--text); }
 .radarSkills { display:flex; flex-direction:column; gap:14px; }

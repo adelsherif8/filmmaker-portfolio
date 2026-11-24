@@ -2,61 +2,47 @@ export const en = {
   dir: 'ltr',
 
   nav: {
-    about: 'About', films: 'Films', gallery: 'Gallery', placidShoot: 'Placid Shoot',
-    craft: 'Craft', breakdown: 'Breakdown', press: 'Press', contact: 'Contact',
+    about: 'About', writing: 'Writing', films: 'Work', credits: 'Credits',
+    training: 'Training', contact: 'Contact', placidShoot: 'Placid Shoot', craft: 'Craft',
   },
 
-  ticker: ['Scriptwriter','Film Production','Sound Design',
-           'Visual Storytelling','Story Development','Cairo, Egypt','قهوة الميتين'],
 
   hero: {
     nameFirst: 'Omar',
     nameLast:  'Emad El Din',
-    eyebrow:  'Filmmaker · Scriptwriter',
-    tagline:  'I tell visual stories with intention — from the written word to the final frame. Based in Cairo, I craft cinema that feels, breathes, and endures.',
-    chips:    ['Scriptwriter','Film Director','Sound Recordist','Cairo, Egypt'],
+    eyebrow:  'Scriptwriter · Filmmaker · Sound Recordist',
+    tagline:  'I write films, ads and video in Arabic (including Egyptian dialect) and English, and I work on set. BUE film graduate, 2025.',
+    chips:    ['Scriptwriter','Creative Director','Sound Recordist','Arabic · English'],
+    location: 'Cairo, Egypt · Doha, Qatar from December 2026 · Open to remote',
+    readScript: 'Read a script sample',
+    watch:    'Watch work',
+    email:    'Email',
     metaTag:  'Scene One',
     scroll:   'Scroll',
-    cv:       'View CV',
+    cv:       'CV (PDF)',
   },
 
   films: {
-    label:  '02 — Films & Projects',
-    intro:  'Drag through a body of work spanning narrative short film, documentary production, and brand storytelling.',
-    hint:   'Drag to explore',
+    label:  '03 — Work',
+    intro:  'Short film, documentary and brand film. Each card shows my role on the project.',
+    hint:   'Drag or swipe to explore',
   },
 
-  process: {
-    label:   '04 — The Process',
-    heading: ['How a film ', 'comes to life.'],
-  },
 
-  gallery: {
-    label:   '05 — From the Set',
-    heading: ['Behind the ', 'camera.'],
-  },
 
   placidShoot: {
-    label:    '06 — Placid Disruption · Shoot',
+    label:    '04 — Placid Disruption · Shoot',
     heading:  ['Inside the ', 'Placid shoot.'],
-    sub:      'A look inside the Placid Essentials campaign — every still and motion frame from the shoot.',
+    sub:      'Stills and motion from the Placid Essentials campaign.',
     play:     'Play',
   },
 
-  influences: {
-    label:   '06 — Influences',
-    heading: ['The films that ', 'shaped the eye.'],
-    dir:     'dir.',
-  },
 
-  testimonials: {
-    label: 'Words from the set',
-  },
 
   craft: {
-    label:    '08 — Craft',
+    label:    '06 — Skills',
     heading:  ['Behind', 'the ', 'Lens'],
-    desc:     'Every discipline in service of the story. The tools are secondary to the intent behind them.',
+    desc:     'Every discipline in service of the story.',
     frames: [
       { label:'Directing',       title:'The eye behind the frame' },
       { label:'Screenwriting',   title:'Where every story begins' },
@@ -65,77 +51,55 @@ export const en = {
     radarNote: 'SELF-ASSESSED · RELATIVE WEIGHTING',
   },
 
-  timeline: {
-    label:   '09 — Career Timeline',
-    heading: ['The ', 'journey', ' so far.'],
-  },
 
   training: {
-    label:   '10 — Training & Education',
+    label:   '07 — Training & Education',
     heading: ['The making of a ', 'filmmaker.'],
     statuses: { 'In Progress': 'In Progress', 'Completed': 'Completed', 'Graduated': 'Graduated' },
   },
 
   breakdown: {
-    label:      '11 — Script Analysis',
-    writerNote: 'Writer\'s Notes',
+    label:      '02 — Writing',
+    writerNote: 'Scene notes',
     hint:       'Click a note or a highlighted line to expand.',
-    subtitle:   'Scene Analysis — The Confrontation',
+    subtitle:   'Short film · Horror / drama · Egyptian Arabic · Sample pages',
+    logline:    'Logline: When Amir learns his father hid that his mother was alive and searching for him until she died two years ago, he follows an online legend into an abandoned house where, if you enter alone at 11:11, a hot cup of coffee waits and the dead will talk to you.',
+    original:   'Original (Egyptian Arabic)',
+    translation:'English translation',
+    request:    'Full script and more samples on request',
     scriptMeta: 'Written by Omar Emad El Din',
   },
 
-  press: {
-    label:   '12 — Screenings & Work',
-    heading: ['Where the work', 'has been seen.'],
-    types: {
-      'Graduation Screening': 'Graduation Screening',
-      'Brand Release': 'Brand Release',
-      'On-Set Credit': 'On-Set Credit',
-      'Placeholder': 'Placeholder',
-    },
-  },
 
-  next: {
-    label:   '13 — Next Project',
-    stamp:   'CLASSIFIED',
-    ref:     'FILE REF: OEE-2025-001',
-    title:   ['— A Story of '],
-    status:  'In Development',
-    format:  'Short Film',
-    role:    'Writer · Director',
-    desc:    'A new original work currently in development. Details withheld pending production. Expression of interest and collaboration enquiries welcome.',
-    cta:     'Express Interest',
-    keys:    { STATUS: 'STATUS', FORMAT: 'FORMAT', GENRE: 'GENRE', ROLE: 'ROLE' },
+
+  credits: {
+    label:   '05 — Credits',
+    heading: ['Credits & ', 'recognition.'],
+    cols:    ['Year','Title','Role','Format','Company / Note'],
+    award:   'Certificate of Achievement, British University in Egypt (Dec 2024), for outstanding contribution as Sound Recordist on "Netting a Life".',
   },
 
   contact: {
-    label:   '14 — Contact',
-    badge:   'Available for Projects',
+    label:   '08 — Contact',
+    badge:   'Open to writing, creative & crew roles',
     heading: ['Let\'s make', 'something', 'real.'],
-    sub:     'I\'m available for film projects and collaborative storytelling. Cairo-based, globally minded.',
+    sub:     'Scriptwriting, video content, copywriting, creative direction and on-set work. Full-time, freelance or per project.',
     cta:     'omar16emad@gmail.com',
     loc:     'Cairo, Egypt',
     locSep:  '·',
-    locSub:  'Available Worldwide',
+    locSub:  'Doha, Qatar from Dec 2026 · Remote',
   },
 
-  reel: {
-    eyebrow:   'Cairo · Egypt',
-    title:     ['The ', 'Showreel'],
-    play:      'Play Showreel',
-    dur:       '2024 REEL',
-    close:     'Close ✕',
-  },
 
   footer: {
-    copy: '© 2024 Omar Emad El Din — All rights reserved',
+    copy: '© 2026 Omar Emad El Din',
     mark: 'قهوة الميتين',
   },
 
   about: {
-    imgTag: 'Director · Cairo',
+    imgTag: 'Scriptwriter · Cairo',
     heading: ['Cinema is how I', 'understand the world.'],
-    stats: ['Film Productions', 'Diplomas & Courses', 'Campaign Directed', 'Stories to Tell'],
+    stats: ['Film credits', 'Film diplomas', 'Award (BUE)', 'Writing languages'],
   },
 }
 
@@ -143,61 +107,47 @@ export const ar = {
   dir: 'rtl',
 
   nav: {
-    about: 'من أنا', films: 'الأفلام', gallery: 'المعرض', placidShoot: 'جلسة Placid',
-    craft: 'الحرفة', breakdown: 'تحليل السيناريو', press: 'العروض', contact: 'تواصل',
+    about: 'من أنا', writing: 'الكتابة', films: 'الأعمال', credits: 'الاعتمادات',
+    training: 'التدريب', contact: 'تواصل', placidShoot: 'جلسة Placid', craft: 'الحرفة',
   },
 
-  ticker: ['كاتب سيناريو','إنتاج الأفلام','تصميم الصوت',
-           'القصص البصرية','تطوير الأفلام','القاهرة، مصر','قهوة الميتين'],
 
   hero: {
     nameFirst: 'عمر',
     nameLast:  'عماد الدين',
-    eyebrow:  'مخرج · كاتب سيناريو',
-    tagline:  'أصنع قصصاً بصرية بنية واضحة — من الكلمة المكتوبة إلى اللقطة الأخيرة. أعمل من القاهرة وأصنع سينما تُحسّ وتتنفس وتبقى.',
-    chips:    ['كاتب سيناريو','مخرج أفلام','مسجل صوت','القاهرة، مصر'],
+    eyebrow:  'كاتب سيناريو · صانع أفلام · مسجل صوت',
+    tagline:  'أكتب أفلاماً وإعلانات ومحتوى فيديو بالعربية (ومنها العامية المصرية) وبالإنجليزية، وأعمل في مواقع التصوير. خريج صناعة الأفلام من الجامعة البريطانية في مصر، 2025.',
+    chips:    ['كاتب سيناريو','مدير إبداعي','مسجل صوت','عربي · إنجليزي'],
+    location: 'القاهرة، مصر · الدوحة، قطر من ديسمبر 2026 · متاح عن بُعد',
+    readScript: 'اقرأ مقطعاً من السيناريو',
+    watch:    'شاهد الأعمال',
+    email:    'البريد',
     metaTag:  'المشهد الأول',
     scroll:   'اسحب',
-    cv:       'السيرة الذاتية',
+    cv:       'السيرة الذاتية (PDF)',
   },
 
   films: {
-    label:  '02 — الأفلام والمشاريع',
-    intro:  'اسحب لتستعرض أعمالاً تمتد من الأفلام القصيرة إلى الوثائقي والإعلانات الإبداعية.',
+    label:  '03 — الأعمال',
+    intro:  'فيلم قصير ووثائقي وفيلم لعلامة تجارية. كل بطاقة توضح دوري في المشروع.',
     hint:   'اسحب للاستعراض',
   },
 
-  process: {
-    label:   '04 — المنهجية',
-    heading: ['كيف يولد ', 'الفيلم.'],
-  },
 
-  gallery: {
-    label:   '05 — من موقع التصوير',
-    heading: ['خلف ', 'الكاميرا.'],
-  },
 
   placidShoot: {
-    label:    '06 — حملة Placid · جلسة التصوير',
+    label:    '04 — حملة Placid · جلسة التصوير',
     heading:  ['من داخل ', 'جلسة Placid.'],
-    sub:      'نظرة من داخل حملة Placid Essentials — كل لقطة ثابتة ومتحركة من جلسة التصوير.',
+    sub:      'لقطات ثابتة ومتحركة من حملة Placid Essentials.',
     play:     'تشغيل',
   },
 
-  influences: {
-    label:   '06 — التأثيرات',
-    heading: ['الأفلام التي ', 'شكّلت العين.'],
-    dir:     'إخراج',
-  },
 
-  testimonials: {
-    label: 'أصوات من موقع التصوير',
-  },
 
   craft: {
-    label:    '08 — الحرفة',
+    label:    '06 — المهارات',
     heading:  ['خلف', 'العدسة', ''],
-    desc:     'كل مهارة في خدمة القصة. الأدوات ثانوية أمام النية التي تقف خلفها.',
+    desc:     'كل مهارة في خدمة القصة.',
     frames: [
       { label:'الإخراج',        title:'العين خلف الكادر'  },
       { label:'كتابة السيناريو', title:'حيث تبدأ كل قصة'   },
@@ -206,76 +156,54 @@ export const ar = {
     radarNote: 'تقييم ذاتي · أوزان نسبية',
   },
 
-  timeline: {
-    label:   '09 — المسيرة المهنية',
-    heading: ['الرحلة ', 'حتى الآن', '.'],
-  },
 
   training: {
-    label:   '10 — التدريب والتعليم',
-    heading: ['تكوين ', 'مخرج.'],
+    label:   '07 — التدريب والتعليم',
+    heading: ['تكوين ', 'صانع أفلام.'],
     statuses: { 'In Progress': 'جارٍ حالياً', 'Completed': 'مكتمل', 'Graduated': 'متخرج' },
   },
 
   breakdown: {
-    label:      '11 — تحليل السيناريو',
-    writerNote: 'ملاحظات الكاتب',
+    label:      '02 — الكتابة',
+    writerNote: 'ملاحظات على المشهد',
     hint:       'انقر على ملاحظة أو سطر مضاء للتوسيع.',
-    subtitle:   'تحليل المشهد — المواجهة',
-    scriptMeta: 'كتبه عمر عماد الدين',
+    subtitle:   'فيلم قصير · رعب / دراما · عامية مصرية · صفحات مختارة',
+    logline:    'الفكرة: لما أمير يكتشف إن أبوه خبّى عنه إن أمه كانت عايشة وبتدور عليه لحد ما ماتت من سنتين، بيمشي ورا أسطورة على الإنترنت لبيت مهجور، لو دخلته لوحدك الساعة 11:11 هتلاقي فنجان قهوة سخن مستنيك، والميتين هيكلموك.',
+    original:   'النص الأصلي (عامية مصرية)',
+    translation:'الترجمة الإنجليزية',
+    request:    'السيناريو الكامل وأعمال أخرى عند الطلب',
+    scriptMeta: 'تأليف عمر عماد الدين',
   },
 
-  press: {
-    label:   '12 — العروض والأعمال',
-    heading: ['أين شوهدت', 'الأعمال.'],
-    types: {
-      'Graduation Screening': 'عرض التخرج',
-      'Brand Release': 'إطلاق الحملة',
-      'On-Set Credit': 'اعتماد على الموقع',
-      'Placeholder': 'أضف هنا',
-    },
-  },
 
-  next: {
-    label:  '13 — المشروع القادم',
-    stamp:  'سري للغاية',
-    ref:    'رقم الملف: OEE-2025-001',
-    title:  ['— قصة '],
-    status: 'قيد التطوير',
-    format: 'فيلم قصير',
-    role:   'كاتب · مخرج',
-    desc:   'عمل أصيل جديد قيد التطوير. التفاصيل محجوبة ريثما يبدأ الإنتاج. يسعدنا تلقّي طلبات التعاون.',
-    cta:    'أبدِ اهتمامك',
-    keys:   { STATUS: 'الحالة', FORMAT: 'التنسيق', GENRE: 'النوع', ROLE: 'الدور' },
+
+  credits: {
+    label:   '05 — الاعتمادات',
+    heading: ['الاعتمادات ', 'والتقدير.'],
+    cols:    ['السنة','العمل','الدور','النوع','الجهة / ملاحظة'],
+    award:   'شهادة تقدير من الجامعة البريطانية في مصر (ديسمبر 2024) للمساهمة المتميزة كمسجل صوت في الفيلم الوثائقي "Netting a Life".',
   },
 
   contact: {
-    label:   '14 — تواصل',
-    badge:   'متاح للمشاريع',
+    label:   '08 — تواصل',
+    badge:   'متاح لأدوار الكتابة والإبداع وفريق التصوير',
     heading: ['لنصنع', 'شيئاً', 'حقيقياً.'],
-    sub:     'متاح للأفلام والقصص المشتركة. من القاهرة إلى العالم.',
+    sub:     'كتابة سيناريو، محتوى فيديو، كتابة إعلانات، إدارة إبداعية، وعمل في موقع التصوير. دوام كامل أو حر أو بالمشروع.',
     cta:     'omar16emad@gmail.com',
     loc:     'القاهرة، مصر',
     locSep:  '·',
-    locSub:  'متاح عالمياً',
+    locSub:  'الدوحة، قطر من ديسمبر 2026 · عن بُعد',
   },
 
-  reel: {
-    eyebrow:  'القاهرة · مصر',
-    title:    ['', 'الشريط'],
-    play:     'شاهد الشريط',
-    dur:      'شريط 2024',
-    close:    'أغلق ✕',
-  },
 
   footer: {
-    copy: '© 2024 عمر عماد الدين — جميع الحقوق محفوظة',
+    copy: '© 2026 عمر عماد الدين',
     mark: 'قهوة الميتين',
   },
 
   about: {
-    imgTag:  'مخرج · القاهرة',
+    imgTag:  'كاتب سيناريو · القاهرة',
     heading: ['السينما هي كيف', 'أفهم العالم.'],
-    stats:   ['إنتاج سينمائي', 'دبلومات ودورات', 'حملة أخرجها', 'قصص تنتظر'],
+    stats:   ['أعمال سينمائية', 'دبلومات أفلام', 'شهادة تقدير (BUE)', 'لغات الكتابة'],
   },
 }

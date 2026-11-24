@@ -24,7 +24,7 @@
   color: rgba(255,255,255,.18); letter-spacing: .04em; line-height: 1.4;
 }
 .sub {
-  font-size: 7.5px; text-transform: uppercase; letter-spacing: .28em;
+  font-size:9px; text-transform: uppercase; letter-spacing: .28em;
   color: rgba(184,151,58,.28); margin-top: -4px;
 }
 .corner { position: absolute; width: 14px; height: 14px; border-color: rgba(184,151,58,.14); border-style: solid; }

@@ -1,5 +1,5 @@
 .panel {
-  position: fixed; left: 24px; bottom: 80px;
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
   display: flex; flex-direction: column; gap: 4px;
   z-index: 500;
 }
@@ -8,13 +8,13 @@
   padding: 10px 12px; background: var(--panel);
   border: 1px solid var(--border2); color: var(--dim);
   transition: border-color .3s, color .3s, background .3s;
-  cursor: none; text-decoration: none;
+  cursor:pointer; text-decoration: none;
   backdrop-filter: blur(8px);
 }
 .btn:hover { border-color: var(--gold); color: var(--text); background: rgba(184,151,58,.06); }
 .btn.active { border-color: var(--gold); color: var(--gold2); background: rgba(184,151,58,.08); }
 .icon { font-size: 13px; line-height: 1; width: 14px; text-align: center; }
-.lbl  { font-family: var(--font-mono); font-size: 6px; letter-spacing: .18em; text-transform: uppercase; }
+.lbl  { font-family: var(--font-mono); font-size:9px; letter-spacing: .18em; text-transform: uppercase; }
 .cvBtn {
   border-color: var(--gold);
   color: var(--gold2);
@@ -23,6 +23,6 @@
   gap: 5px;
 }
 .cvBtn .icon { font-size: 15px; width: 16px; }
-.cvBtn .lbl  { font-size: 7px; letter-spacing: .22em; }
+.cvBtn .lbl  { font-size:9px; letter-spacing: .22em; }
 .cvBtn:hover { background: rgba(184,151,58,.16); color: var(--gold); }
-@media (max-width: 900px) { .panel { display: none; } }
+@media (max-width: 900px) { .panel { flex-direction: row; top: auto; bottom: 12px; right: 12px; transform: none; opacity: .92; } .panel > :not(:nth-child(2)) { display: none; } }

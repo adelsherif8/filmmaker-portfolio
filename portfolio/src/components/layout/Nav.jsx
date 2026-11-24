@@ -9,14 +9,12 @@ export default function Nav() {
   const t = useLang()
 
   const links = [
-    { label: t.nav.about,       href: '#about'        },
-    { label: t.nav.films,       href: '#films'        },
-    { label: t.nav.gallery,     href: '#gallery'      },
-    { label: t.nav.placidShoot, href: '#placid-shoot' },
-    { label: t.nav.craft,       href: '#craft'        },
-    { label: t.nav.breakdown,   href: '#breakdown'    },
-    { label: t.nav.press,       href: '#press'        },
-    { label: t.nav.contact,     href: '#contact'      },
+    { label: t.nav.about,     href: '#about'     },
+    { label: t.nav.writing,   href: '#breakdown' },
+    { label: t.nav.films,     href: '#films'     },
+    { label: t.nav.credits,   href: '#credits'   },
+    { label: t.nav.training,  href: '#training'  },
+    { label: t.nav.contact,   href: '#contact'   },
   ]
 
   useEffect(() => {
@@ -27,13 +25,7 @@ export default function Nav() {
 
   const handleNav = (e, href) => {
     e.preventDefault()
-    if (window.__filmTransition) {
-      window.__filmTransition(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-      })
-    } else {
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
