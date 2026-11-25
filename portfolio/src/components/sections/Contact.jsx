@@ -93,6 +93,14 @@ export default function Contact() {
         WhatsApp · +20 100 995 5921
       </motion.a>
 
+      <motion.a href="https://www.linkedin.com/in/omar-emad-el-din-208065354" target="_blank" rel="noopener noreferrer"
+        className={`${s.cvLink} hoverable`} style={{marginTop:12}}
+        initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}}
+        transition={{duration:.7,delay:.28}} viewport={{once:true}}>
+        <i className="fa-brands fa-linkedin" />
+        LinkedIn · Omar Emad El Din
+      </motion.a>
+
       <motion.div className={s.loc}
         initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:.7,delay:.3}} viewport={{once:true}}>
         {t.contact.loc} <em>{t.contact.locSep}</em> {t.contact.locSub}

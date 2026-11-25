@@ -142,6 +142,9 @@ export default function Hero({ ready }) {
               <a href="https://wa.me/201009955921" target="_blank" rel="noopener noreferrer" className={s.cvBtn}>
                 <i className="fa-brands fa-whatsapp" /><span>WhatsApp</span>
               </a>
+              <a href="https://www.linkedin.com/in/omar-emad-el-din-208065354" target="_blank" rel="noopener noreferrer" className={s.cvBtn}>
+                <i className="fa-brands fa-linkedin" /><span>LinkedIn</span>
+              </a>
               <a href="/cv.html" target="_blank" rel="noopener noreferrer" className={s.cvBtn}>
                 <i className="fa-solid fa-file-lines" /><span>{t.hero.cv}</span>
               </a>
