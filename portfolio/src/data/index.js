@@ -179,6 +179,22 @@ export const breakdown = {
   ],
 }
 
+// More original scripts (from Omar's screenplay folder; unproduced spec scripts)
+export const moreScripts = [
+  { title:'Qadar', ar:'قدر', en_t:'Fate', genre:'Dark fantasy', genre_ar:'فانتازيا مظلمة', pages:'13 pp', year:'2025', icon:'fa-chess-king',
+    logline:'In a timeless hall, Adam sits down to a deadly game against Azazel and Rouh, where every coloured chip is a temptation and losing means death.',
+    logline_ar:'في قاعة خارج الزمن، آدم بيقعد يلعب لعبة مميتة قدام عزازيل وروح، كل فيشة فيها إغراء، واللي بيخسر بيموت.' },
+  { title:'Otl Fanni', ar:'عطل فني', en_t:'Technical Glitch', genre:'Comedy', genre_ar:'كوميديا', pages:'8 pp', year:'2025', icon:'fa-robot',
+    logline:'An AI robot built on a chatbot quits humanity live on a TV news show, and starts exposing the viewers who drove it mad.',
+    logline_ar:'روبوت ذكاء اصطناعي بيطفش من البشر على الهوا في برنامج أخبار، ويبدأ يفضح المشاهدين اللي جننوه.' },
+  { title:'Gowa Aqli', ar:'جوا عقلي', en_t:'Inside My Head', genre:'Drama', genre_ar:'دراما', pages:'7 pp', year:'2024', icon:'fa-brain',
+    logline:'Haunted by his father\'s suicide, Youssef takes an illegal pill that erases painful memories, and meets his father one last time.',
+    logline_ar:'يوسف، اللي مطارده انتحار أبوه، بياخد حباية بتمسح الذكريات الموجعة، ويقابل أبوه لآخر مرة.' },
+  { title:'The Receipt · El Abd wel Shaitan', ar:'الإيصال · العبد والشيطان', en_t:'Micro-shorts, 1–2 min', genre:'Thriller · Comedy', genre_ar:'إثارة · كوميديا', pages:'1–2 pp each', year:'2025', icon:'fa-receipt',
+    logline:'A receipt that prints the buyer\'s time of death, and a devil who appears in the mirror to beg a man to stop singing.',
+    logline_ar:'إيصال مطبوع عليه ميعاد موت الزبون، وشيطان بيظهر في المراية يترجى واحد يبطل غُنا.' },
+]
+
 export const placidShoot = [
   { kind:'video', src:'/videos/placid/reel_v3.mp4', poster:'/posters/placid-showreel-thumb.jpg', label:'Final Cut · Reel'    },
   { kind:'image', src:'/posters/placid-shot1.jpg',  label:'Scene 01 · Frame'    },

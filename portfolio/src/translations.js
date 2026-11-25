@@ -68,6 +68,8 @@ export const en = {
     translation:'English translation',
     request:    'Full script and more samples on request',
     scriptMeta: 'Written by Omar Emad El Din',
+    moreTitle:  'More original scripts',
+    moreSub:    'Spec short scripts in Egyptian Arabic · drama, dark fantasy, comedy, thriller',
   },
 
 
@@ -173,6 +175,8 @@ export const ar = {
     translation:'الترجمة الإنجليزية',
     request:    'السيناريو الكامل وأعمال أخرى عند الطلب',
     scriptMeta: 'تأليف عمر عماد الدين',
+    moreTitle:  'سيناريوهات أصلية أخرى',
+    moreSub:    'أفلام قصيرة بالعامية المصرية · دراما، فانتازيا مظلمة، كوميديا، إثارة',
   },
 
 

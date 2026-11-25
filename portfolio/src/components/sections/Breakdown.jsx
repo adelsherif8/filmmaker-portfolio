@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSection } from '../../context/SectionContext'
-import { breakdown } from '../../data'
+import { breakdown, moreScripts } from '../../data'
 import useLang from '../../hooks/useLang'
 import s from './Breakdown.module.css'
 
@@ -104,6 +104,27 @@ export default function Breakdown() {
           <p className={s.hint}>{t.breakdown.hint}</p>
           <a href="#contact" className={s.request}><i className="fa-solid fa-file-pdf" /> {t.breakdown.request}</a>
         </motion.div>
+      </div>
+
+      {/* More original scripts */}
+      <div className={s.more}>
+        <h3 className={s.moreTitle}>{t.breakdown.moreTitle}</h3>
+        <p className={s.moreSub}>{t.breakdown.moreSub}</p>
+        <div className={s.moreGrid}>
+          {moreScripts.map((m, i) => (
+            <motion.article key={m.title} className={s.moreCard}
+              initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}}
+              transition={{duration:.6,delay:i*.08}} viewport={{once:true}}>
+              <div className={s.moreTop}>
+                <i className={`fa-solid ${m.icon}`} />
+                <span>{t.dir === 'rtl' ? m.genre_ar : m.genre} · {m.pages} · {m.year}</span>
+              </div>
+              <div className={s.moreName}>{t.dir === 'rtl' ? m.ar : m.title}</div>
+              <div className={s.moreAr}>{t.dir === 'rtl' ? m.title : `${m.ar} · ${m.en_t}`}</div>
+              <p className={s.moreLog}>{t.dir === 'rtl' ? m.logline_ar : m.logline}</p>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   )
