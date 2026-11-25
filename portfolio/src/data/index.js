@@ -2,7 +2,7 @@ export const films = [
   {
     id: '000', num: 'SCENE 000 · MOCKUMENTARY · 2026',
     title: 'The Office', arabic: '', subtitle: 'Workplace mockumentary · GUC student competition entry · 2026',
-    tags: ['Mockumentary', 'Comedy', 'English'], role: 'Writer · Camera · Editor',
+    tags: ['Mockumentary', 'Comedy', 'English'], role: 'Writer · Director · Camera · Editor',
     icon: 'fa-briefcase',
     image: '/posters/the-office.jpg',
     link: 'https://drive.google.com/file/d/1YgKj3MGqhwHPPimdnX-xaIp3Be85E4RW/view?usp=drive_link',
@@ -10,7 +10,7 @@ export const films = [
     desc: 'An 8-minute mockumentary in five chapters (The Dress Code, The Untouchable Star, The Micromanager, The Deadline Disaster, Final Interview), each closing on its cause and consequence. Made for a team of friends entering a German University in Cairo student competition: I wrote the script, shot the film and handled the full production through to the final cut.',
     highlights: [
       'Wrote the script: five comic chapters with to-camera interviews.',
-      'Shot the whole film.',
+      'Directed and shot the whole film.',
       'Handled the full production, from script to final cut.',
     ],
   },
@@ -62,7 +62,7 @@ export const films = [
 
 // Clean credits list (from the CV)
 export const credits = [
-  { year: '2026', title: 'The Office', role: 'Writer · Camera · Editor', format: 'Mockumentary short', company: 'GUC student competition entry' },
+  { year: '2026', title: 'The Office', role: 'Writer · Director · Camera · Editor', format: 'Mockumentary short', company: 'GUC student competition entry' },
   { year: '2025', title: 'The Death of Mozart', role: 'Slate / Clapper', format: 'Short film', company: 'dir. Mazen Haggag · Rahala Productions' },
   { year: '2025', title: 'Qahwet El Mayteen · قهوة الميتين', role: 'Scriptwriter', format: 'Short film (graduation)', company: 'British University in Egypt' },
   { year: '2025', title: 'Placid Disruption', role: 'Creative Director', format: 'Brand film / campaign', company: 'Placid Essentials' },
