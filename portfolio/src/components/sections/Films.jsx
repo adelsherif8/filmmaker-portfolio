@@ -87,6 +87,15 @@ export default function Films() {
               </button>
             )}
 
+            {f.link && (
+              <a href={f.link} target="_blank" rel="noopener noreferrer" className={s.playBtn} style={{opacity:1}}>
+                <div className={s.playRing}>
+                  <i className="fa-solid fa-play" />
+                </div>
+                <span className={s.playLbl}>Watch Film</span>
+              </a>
+            )}
+
             <div className={s.cardInfo}>
               <div className={s.cardTags}>
                 {f.tags.map(tag=><span key={tag} className={s.tag}>{tag}</span>)}

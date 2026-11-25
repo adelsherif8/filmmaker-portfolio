@@ -24,7 +24,7 @@ export const en = {
 
   films: {
     label:  '03 — Work',
-    intro:  'Short film, documentary and brand film. Each card shows my role on the project.',
+    intro:  'Mockumentary, short film, documentary and brand film. Each card shows my role on the project.',
     hint:   'Drag or swipe to explore',
   },
 
@@ -129,7 +129,7 @@ export const ar = {
 
   films: {
     label:  '03 — الأعمال',
-    intro:  'فيلم قصير ووثائقي وفيلم لعلامة تجارية. كل بطاقة توضح دوري في المشروع.',
+    intro:  'فيلم ساخر وفيلم قصير ووثائقي وفيلم لعلامة تجارية. كل بطاقة توضح دوري في المشروع.',
     hint:   'اسحب للاستعراض',
   },
 

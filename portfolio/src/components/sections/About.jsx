@@ -18,7 +18,7 @@ function CountUp({ target, suffix = '' }) {
 }
 
 const stats = [
-  { target: 4, suffix: '' },
+  { target: 5, suffix: '' },
   { target: 3, suffix: '' },
   { target: 1, suffix: '' },
   { target: 2, suffix: '' },
