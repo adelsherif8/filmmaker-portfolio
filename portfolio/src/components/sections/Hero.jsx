@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSection } from '../../context/SectionContext'
 import useLang from '../../hooks/useLang'
@@ -12,6 +12,18 @@ export default function Hero({ ready }) {
   const t = useLang()
 
   useEffect(() => { registerSection('Hero', sectionRef.current) }, [])
+
+  // Showreel modal: opens from the hero button, or directly via /reel or #reel (the link on the CVs)
+  const [reel, setReel] = useState(false)
+  useEffect(() => {
+    if (window.location.pathname.replace(/\/$/, '') === '/reel' || window.location.hash === '#reel') setReel(true)
+  }, [])
+  useEffect(() => {
+    if (!reel) return
+    const onKey = e => { if (e.key === 'Escape') setReel(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [reel])
 
   // Canvas: light leaks + particles
   useEffect(() => {
@@ -130,11 +142,14 @@ export default function Hero({ ready }) {
             <motion.div className={s.actions}
               initial={{opacity:0,y:14}} animate={{opacity:1,y:0}}
               transition={{delay:.7,duration:.7}}>
-              <a href="#breakdown" className={`${s.cvBtn} ${s.primary}`}>
+              <button type="button" onClick={() => setReel(true)} className={`${s.cvBtn} ${s.primary}`}>
+                <i className="fa-solid fa-play" /><span>{t.hero.reel}</span>
+              </button>
+              <a href="#breakdown" className={s.cvBtn}>
                 <i className="fa-solid fa-pen-nib" /><span>{t.hero.readScript}</span>
               </a>
               <a href="#films" className={s.cvBtn}>
-                <i className="fa-solid fa-play" /><span>{t.hero.watch}</span>
+                <i className="fa-solid fa-film" /><span>{t.hero.watch}</span>
               </a>
               <a href="mailto:omar16emad@gmail.com" className={s.cvBtn}>
                 <i className="fa-solid fa-envelope" /><span>{t.hero.email}</span>
@@ -152,6 +167,22 @@ export default function Hero({ ready }) {
           </>
         )}
       </div>
+
+      <AnimatePresence>
+        {reel && (
+          <motion.div className={s.reelBg} onClick={() => setReel(false)}
+            initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:.3}}
+            role="dialog" aria-modal="true" aria-label="Showreel">
+            <div className={s.reelBox} onClick={e => e.stopPropagation()}>
+              <button type="button" className={s.reelClose} onClick={() => setReel(false)} aria-label="Close">
+                <i className="fa-solid fa-xmark" />
+              </button>
+              <video src="/videos/showreel.mp4" poster="/posters/showreel-poster.jpg"
+                className={s.reelVideo} controls autoPlay playsInline />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className={s.scrollInd}>
         <div className={s.scrollTrack}><div className={s.scrollThumb}/></div>

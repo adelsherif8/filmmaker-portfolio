@@ -62,3 +62,10 @@
 .actions .cvBtn { margin-top:0; }
 .primary { background:var(--gold2); color:#0a0a0a; }
 @media (max-width:900px) { .actions .cvBtn { padding:10px 14px; letter-spacing:.16em; } .scrollInd { display:none; } .vline { display:none; } }
+
+/* Showreel modal */
+button.cvBtn { font: inherit; cursor: pointer; }
+.reelBg { position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.92); display:flex; align-items:center; justify-content:center; padding:4vw; }
+.reelBox { position:relative; width:min(1200px,100%); }
+.reelVideo { width:100%; display:block; background:#000; max-height:85vh; outline:none; }
+.reelClose { position:absolute; top:-40px; right:0; color:var(--text); font-size:22px; background:none; border:0; cursor:pointer; }
