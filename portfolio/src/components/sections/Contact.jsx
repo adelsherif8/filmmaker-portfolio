@@ -85,8 +85,16 @@ export default function Contact() {
         {t.contact.cta}
       </motion.a>
 
-      <motion.a href="https://wa.me/201009955921" target="_blank" rel="noopener noreferrer"
+      <motion.a href="/reel"
         className={`${s.cvLink} hoverable`} style={{marginTop:18}}
+        initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}}
+        transition={{duration:.7,delay:.22}} viewport={{once:true}}>
+        <i className="fa-solid fa-play" />
+        Showreel 2026 · 76 s
+      </motion.a>
+
+      <motion.a href="https://wa.me/201009955921" target="_blank" rel="noopener noreferrer"
+        className={`${s.cvLink} hoverable`} style={{marginTop:12}}
         initial={{opacity:0,y:14}} whileInView={{opacity:1,y:0}}
         transition={{duration:.7,delay:.25}} viewport={{once:true}}>
         <i className="fa-brands fa-whatsapp" />
